@@ -4,7 +4,7 @@ class Image(db.Document):
     tweetId = db.StringField()
     tweetUrl = db.StringField()
     tweetText = db.StringField()
-    topic = db.ListField(db.StringField())
+    topic = db.StringField()
     altText = db.StringField()
     
     def to_json(self):

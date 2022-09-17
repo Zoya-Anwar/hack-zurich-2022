@@ -10,6 +10,8 @@ from flask_cors import CORS
 from twitterScraper import getRandomTwitterImageapDocuments
 import spacy
 import time
+import json
+import random
 
 NAME = "ZOYA ANWAR"
 
@@ -58,41 +60,80 @@ def clean_skills(skills):
 @app.route('/getTweetImage', methods=['GET'])
 def get_tweet_image():
     user = User.objects(name=NAME).first()
+    task_images = []
+    count = 0
 
-    # Check image not already in database which needs doing and not already done by user
+    # Check images not already in database which needs doing and not already done by user
+    
     for skill in user.skills: 
         skillImages = Image.objects(topic=skill)
         for skillImage in skillImages: 
             if skillImage.altText == "":
-                userImageAltText = ImageAltText.objects(imageID=skillImage.tweetId, userName = NAME)
+                userImageAltText = ImageAltText.objects(imageId=skillImage.tweetId, userName = NAME).first()
                 if userImageAltText is None: 
-                    return jsonify(skillImage.to_json())
+                    count = count + 1
+                    task_images.append(skillImage.to_json())
+                    #return jsonify(skillImage.to_json())
+                    if count >= 10: 
+                        break
             
-    # otherwise loop until new appropriate image found 
-    while True:
-        rndImage, rndTopic = getRandomTwitterImageapDocuments(user.skills)
-        print(rndImage)
-        print("HERE!")
-        rndImage = rndImage[0]
-        image = Image.objects(tweetId = rndImage['id']).first()
-        # check doesn't exist in the images
-        if not image:
-            # # check image actually on topic (spam detection)
-            # labels = detect_labels_uri(rndImage['URL'])
+    print(task_images)
+    return jsonify(task_images)
+
+    # # get 10 images 
+    # if len(task_images) < 10: 
+    #     rndImages, rndTopics = getRandomTwitterImageapDocuments(user.skills, 10-len(task_images))
+    #     count = 0
+
+    #         # # check image actually on topic (spam detection)
+    #         # labels = detect_labels_uri(rndImage['URL'])
             
-            # if validate_image_on_topic(labels, rndTopic):
+    #         # if validate_image_on_topic(labels, rndTopic):
 
-            # upload image to database
-            newImage  = Image(tweetId=rndImage['id'],
-            tweetUrl=rndImage['url'],
-            tweetText=rndImage['full_text'], 
-            topic = [rndTopic], 
-            altText = "")
-            newImage.save()
-            print(newImage)
-            break
+    #     for rndImage in rndImages:
+    #         image = Image.objects(tweetId = rndImage['id']).first()
+    #         # # check doesn't exist in the images
+    #         # if not image:
+    #         # upload image to database
+    #         newImage  = Image(tweetId=rndImage['id'],
+    #         tweetUrl=rndImage['url'],
+    #         tweetText=rndImage['full_text'], 
+    #         topic = [rndTopics[count]], 
+    #         altText = "")
+    #         newImage.save()
+    #         task_images.append(newImage.to_json())
 
-    return jsonify(newImage.to_json())
+    #         count = count + 1
+
+    # print(task_images)
+    return jsonify(task_images)
+
+@app.route('/test')
+def parse_csv():
+    file = open("dataset_twitter.json")
+    data = json.load(file)
+    count = 0
+    set_topic = "SQL"
+    for line in data:
+        if count > 121:
+            set_topic = "Climate change"
+        elif count > 228: 
+            set_topic = "Construction"
+
+        t = Image(tweetId=line['id'],
+                tweetUrl=line['url'],
+                tweetText="",
+                topic=set_topic,
+                altText="")
+        t.save()
+
+# Image(tweetId=rndImage['id'],
+    #         tweetUrl=rndImage['url'],
+    #         tweetText=rndImage['full_text'], 
+    #         topic = [rndTopics[count]], 
+    #         altText = "")
+
+    file.close()
 
 def detect_labels_uri(uri, topic):
     """Detects labels in the file located in Google Cloud Storage or on the
