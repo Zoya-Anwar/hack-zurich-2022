@@ -116,7 +116,7 @@ def detect_labels_uri(uri, topic):
     return labels 
 
 def validate_image_on_topic(labels, topic):
-    nlp = spacy.load("en_core_web_md")
+    nlp = spacy.load("en_core_web_sm")
     for label in labels:
         nlp_label = nlp(label)
         nlp_topic = nlp(topic)
@@ -130,31 +130,36 @@ def post_tweet_images():
 
     # add new altext record
     record = json.loads(request.data)
-    newImageAltText = ImageAltText(imageID=record['image_id'], 
+    newImageAltText = ImageAltText(imageId=record['image_id'], 
     userName = NAME, 
     altText = record['alt_text'])
+
+    print(record)
     newImageAltText.save()
 
     # mark as done if semantically similar enough to another entry 
-    similarity_check_alttext(record['image_id'], record['alt_text'])
+    similarity_check_alttext(record['image_id'])
 
     return jsonify(newImageAltText.to_json())
 
 
 def similarity_check_alttext(image_id):
     # check if altext is complete using Spacy similarity checker
-    nlp = spacy.load("en_core_web_md")
+    nlp = spacy.load("en_core_web_sm")
     imagesAltText = ImageAltText.objects(imageId = image_id)
+    print("Here")
     for image in imagesAltText: 
         for image2 in imagesAltText: 
             if image != image2: 
                 image1AltText = nlp(image.altText)
                 image2AltText = nlp(image2.altText)
-                if image1AltText.similarity(image2AltText) >= 0.8: 
+                print(f"The similarity score is {image1AltText.similarity(image2AltText)}")
+                if image1AltText.similarity(image2AltText) >= 0.5: 
                     # We are complete! 
-                    image = Image.objects(tweetId=NAME).first()
-                    image.update(ImageAltText=True)
-                    image.save()
+                    print("We are complete with an image")
+                    overall_image = Image.objects(tweetId=image_id).first()
+                    overall_image.update(altText=image.altText)
+                    overall_image.save()
 
  
 
