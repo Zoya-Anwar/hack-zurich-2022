@@ -1,8 +1,8 @@
 from db import db
 
 class ImageAltText(db.Document):
-    imageId = db.ObjectIdField()
-    userId = db.ObjectIdField()
+    imageId = db.StringField()
+    userName = db.StringField() 
     altText = db.StringField()    
 
     def to_json(self):
