@@ -32,26 +32,26 @@ function HomePage() {
 </div>
 
  <FixedSizeList
-    height={300}
+    height={250}
     // itemCount={5}
-    itemSize={300}
+    itemSize={220}
     layout="horizontal"
 	itemCount={300}
 
-    width={220}
+    width={370}
   >
     {Column}
   </FixedSizeList>
 
 
   <FixedSizeList
-    height={300}
+    height={250}
 	// itemData={[1,2,3]}
-    itemSize={300}
+    itemSize={220}
     layout="horizontal"
 	itemCount={3}
 
-    width={300}
+    width={370}
   >
     {Column2}
   </FixedSizeList>
