@@ -1,6 +1,6 @@
-export function Date(){
-
-
+export function Date(props:{date?:Date}){
+    const stringified= props?.date?.toDateString()
+      
     return     <div className="flex flex-row items-center"> 
 
     <svg
@@ -17,8 +17,9 @@ export function Date(){
         fill="black"
       />
     </svg>
+    {stringified?
     <p className="text-xs text-right text-[#7b7b7b]">
-      Mon, 12 Dec 2022
-    </p>
+    {stringified}
+    </p>:'Unknown Date'}
     </div>
 }

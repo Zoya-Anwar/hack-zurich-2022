@@ -1,7 +1,7 @@
 import { Date } from "./Date";
 import { People } from "./People";
 
-export function Card(props:any){
+export function Card(props:{name?:string, category?:string,rating?:'High'|'Low',date?:Date}){
 
     const category = props?.category??'UX/UI';
     const rating = props?.rating??'High';
@@ -22,7 +22,7 @@ export function Card(props:any){
    
    
     <p className=" w-15px font-semibold text-left text-[#000b23]">
-      Create a Landing Page
+      {props.name}
     </p>
     
     <People></People>
@@ -30,9 +30,8 @@ export function Card(props:any){
     <div className="absolute bottom-2">
 
 
-    <Date></Date>
+    <Date date={props.date}></Date>
     </div>
-
 
   </div>
   </div>;

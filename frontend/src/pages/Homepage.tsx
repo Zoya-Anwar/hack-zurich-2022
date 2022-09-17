@@ -7,14 +7,14 @@ import { SectionHeader } from "../Components/SectionHeader";
 
 const Column = ({data, index, style }:any) => (
 	<div style={style}>
-		<Card/>
+		<Card name='This is a Task' />
 		{data}
 	</div>
   );
 
   const Column2 = ({data, index, style }:any) => (
 	<div style={style}>
-		<EventCard/>
+		<EventCard name='Test Event' />
 		{data}
 	</div>
   );
@@ -36,9 +36,9 @@ function HomePage() {
     // itemCount={5}
     itemSize={300}
     layout="horizontal"
-	itemCount={3}
+	itemCount={300}
 
-    width={300}
+    width={220}
   >
     {Column}
   </FixedSizeList>

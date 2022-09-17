@@ -2,16 +2,23 @@ import { ArrowCircleUpTwoTone } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { ProfileCardSmall } from "../../Components/ProfileCardSmall";
+import { Skills } from "../../Components/Skills";
 import { TaskOrEventCard } from "../../Components/TaskOrEventCard";
 
 
 const data=[{
-    name:'Event1'
+    name:'Event1',
+    skills:['programming','youtube','coding','something'],
+    date:new Date()
     
 },{
-    name:'Event2'
+    name:'Event2',
+    skills:['cycling','gaming','coding','something']
+
 },{
-    name:'Event3'
+    name:'Event3',
+    skills:['something'],
+    description:'event is awesome'
 }]
 
 function EventMatch(){

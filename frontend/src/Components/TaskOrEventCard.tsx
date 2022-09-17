@@ -1,11 +1,15 @@
 import { Divider } from "@mui/material";
 import { Date } from "./Date";
 import { People } from "./People";
+import { Skills } from "./Skills";
 
-export function TaskOrEventCard(props:{item:{name:string,description?:string ,type?:'EVENT'|'TASK'}}){
+export function TaskOrEventCard(props:{item:{name:string,description?:string ,type?:'EVENT'|'TASK',skills?:string[],date?:Date}}){
         const {name,description} = props?.item;
 
-        return <div className="flex flex-col justify-center space-y-2 w-[303px] rounded-[20px] p-3 bg-[#f3f3f3] ]">
+        return <div>
+         <Skills skills={props.item?.skills??[]} />
+        <div className="flex flex-col justify-center space-y-2 w-[303px] rounded-[20px] p-3 bg-[#f3f3f3] ]">
+
     
         <div className="flex flex-row">
 
@@ -27,8 +31,11 @@ export function TaskOrEventCard(props:{item:{name:string,description?:string ,ty
           className="w-full aspect-video rounded-[10px] px-0 object-cover"
         />
     <Divider></Divider>
-        <Date></Date>
-      </div>;
+        <Date date={props.item?.date}></Date>
+      </div>
+      </div>
+
+;
     
 
 
