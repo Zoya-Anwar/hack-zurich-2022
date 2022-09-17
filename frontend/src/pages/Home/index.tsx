@@ -24,8 +24,8 @@ function Home() {
 
 	return (
         <div id="Home" style={{
-            height: 'calc(100% - 16px)',
-            margin: '8px',
+            backgroundColor: loading?'white': '#15083E',
+            height:'100%',
         }}>
             {
                 loading
