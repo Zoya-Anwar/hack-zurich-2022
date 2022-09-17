@@ -4,6 +4,8 @@ import { SectionHeader } from '../../Components/SectionHeader';
 import './style.css';
 import { FixedSizeList } from 'react-window';
 import { EventCard } from '../../Components/EventCard';
+import { ProfileCard } from '../../Components/ProfileCard';
+import { ProfileCardSmall } from '../../Components/ProfileCardSmall';
 
 
 
@@ -24,6 +26,10 @@ const Column = ({data, index, style }:any) => (
 function CVUpload() {
 	return (
 <div className='flex flex-col space-y-5 p-4'>
+
+<ProfileCardSmall/>
+
+{/* <ProfileCard></ProfileCard> */}
 
 <div>
 
