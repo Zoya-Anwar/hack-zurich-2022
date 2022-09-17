@@ -4,7 +4,7 @@ import TinderCard from "react-tinder-card";
 import { ProfileCardSmall } from "./ProfileCardSmall";
 import { TaskOrEventCard } from "./TaskOrEventCard";
 
-export function Matcher(props:{data:{name:string}[]}) {
+export function Matcher(props: { data: { name: string }[] }) {
   const [currentIndex, setCurrentIndex] = useState(props.data.length - 1);
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
@@ -58,50 +58,61 @@ export function Matcher(props:{data:{name:string}[]}) {
 
   return (
     <div className="relative h-full flex flex-col ">
-        <div className='flex flex-col space-y-5 p-4'>
+      <div className="flex flex-col space-y-5 p-4">
         <ProfileCardSmall></ProfileCardSmall>
-        </div>
-        <div className=" h-full flex flex-col justify-center items-center">
-          {props.data.map((item, index) => {
-            return (
-              <TinderCard
-                ref={childRefs[index]}
-                className="absolute bg-white"
-                key={item.name}
-                onSwipe={(dir: any) => swiped(dir, item.name, index)}
-                onCardLeftScreen={() => outOfFrame(item.name, index)}
-              >
-                  <TaskOrEventCard item={props.data[index]}></TaskOrEventCard>
-              </TinderCard>
-            );
-          })}
-        </div>
-       
-     
+      </div>
+      <div className=" h-full w-full bg-white flex flex-col justify-center items-center">
+        {props.data.map((item, index) => {
+          return (
+            <TinderCard
+              ref={childRefs[index]}
+              className="absolute bg-white p-3"
+              key={item.name}
+              onSwipe={(dir: any) => swiped(dir, item.name, index)}
+              onCardLeftScreen={() => outOfFrame(item.name, index)}
+            >
+              <TaskOrEventCard item={props.data[index]}></TaskOrEventCard>
+            </TinderCard>
+          );
+        })}
+      </div>
 
-      <div className="absolute bottom-5 w-full flex flex-row justify-between">
+      <div className="px-3 w-full flex flex-row justify-between">
         <Button
-          style={{ backgroundColor: !canSwipe ? "#c3c4d3" : "" }}
+          disabled={!canSwipe}
+          sx={{
+            backgroundColor: "#1C213F",
+            color: "white",
+            ":hover": { backgroundColor: "#1C213F" },
+            ":disabled": {
+              color: "gray",
+            },
+          }}
           onClick={() => swipe("left")}
         >
           SKIP
         </Button>
-        <Button
+        {/* <Button
           style={{ backgroundColor: !canGoBack ? "#c3c4d3" : "" }}
           onClick={() => goBack()}
         >
           GO BACK
-        </Button>
+        </Button> */}
+    {lastDirection==='right' &&
+        <div className="text-lg">Picked </div>
+    }
         <Button
-          style={{ backgroundColor: !canSwipe ? "#c3c4d3" : "" }}
+          disabled={!canSwipe}
+          sx={{
+            backgroundColor: "#8EF286",
+            color: "white",
+            ":hover": { backgroundColor: "#8EF290" },
+          }}
           onClick={() => swipe("right")}
         >
-          ACCEPT
+          PICK
         </Button>
       </div>
-
-     
     </div>
   );
 }
-
