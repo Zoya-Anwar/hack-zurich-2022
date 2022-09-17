@@ -1,14 +1,17 @@
 import { Avatar, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import avatar from '../resources/1avatar.png'
 
 export function ProfileCard(props:any){
 
     const {name}= props?.name??'JOHN DOE';
 return  <div className="relative"> 
-<Box sx={{ margin:-2, minWidth: 275,height:300,backgroundColor:'#0E1730' }}>
+<Box sx={{ margin:-2, minWidth: 275,height:300,backgroundColor:'#15083E' }}>
 <CardContent>
     <div className="flex flex-col items-center justify-center">
-  <Avatar sx={{width:100,height:100 }}></Avatar>
+  <Avatar sx={{width:100,height:100 }}>
+    <img src={avatar} />
+  </Avatar>
   <Typography>{name}</Typography>
   </div>
 
@@ -35,7 +38,7 @@ return  <div className="relative">
 <div className="absolute bottom-2 w-full">
     <div className=" flex flex-row  justify-between px-5 space-x-2">
     <Button size="small" variant='outlined' >Edit Profile</Button>
-    <Button size="small"  variant="contained" color="success" >Search</Button>
+    <Button size="small"  variant="contained" sx ={{background:'#8EF286',':hover':{background:'#8EF286'}}}>Search</Button>
     </div>
   </div>
 </Box>

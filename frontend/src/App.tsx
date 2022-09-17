@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Routes, Link, useLocation } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
 import CVUpload from './pages/CVUpload';
@@ -8,6 +8,19 @@ import TaskMatch from './pages/Task';
 import EventMatch from './pages/Event';
 
 import HomePage from './pages/Homepage';
+
+
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import {HomeIcon} from './resources/home-2'
+import { CalenderIcon } from './resources/calendar';
+import MessagesIcon from './resources/message-square-lines';
+import { EventIcon } from './resources/event';
+import { TaskIcon } from './resources/task';
+import { ImportContacts } from '@mui/icons-material';
+
+
 
 function App() {
 
@@ -36,8 +49,9 @@ function App() {
 
             </Routes>
             </div>
+			<SimpleBottomNavigation/>
 
-			<TabBar/>
+			{/* <TabBar/> */}
 
         </div>
         </Router>
@@ -74,6 +88,39 @@ function TabBar (){
 	</Tabs>
 	</div>);
 }
+
+
+
+export  function SimpleBottomNavigation() {
+  const [value, setValue] = React.useState(0);
+  const location= useLocation()
+	const navigate= useNavigate()
+  if(location.pathname==='/'){
+	  return <></>
+  }
+  return (
+    <Box sx={{ width: '100%' ,paddingTop:'0'}}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+
+          setValue(newValue);
+		  navigate('/'+newValue)
+
+        }}
+      >
+        <BottomNavigationAction value='homepage' label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction value='task' label="Task" icon={<TaskIcon />} />
+        <BottomNavigationAction value='calender' label="Calender" icon={<CalenderIcon />} />
+		<BottomNavigationAction value='message' label="Messages" icon={<MessagesIcon />} />
+		<BottomNavigationAction value='event' label="Event" icon={<EventIcon />} />
+		
+      </BottomNavigation>
+    </Box>
+  );
+}
+
 
 
 export default App;
