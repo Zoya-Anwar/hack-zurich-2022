@@ -1,18 +1,40 @@
-import { ArrowCircleUpTwoTone } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { ProfileCardSmall } from "../../Components/ProfileCardSmall";
-import { TaskOrEventCard } from "../../Components/TaskOrEventCard";
+import { TaskCard } from "../../Components/TaskCard";
 
+import OpportunityType from "./OpportunityType";
+import { Task } from "./Task";
+import TaskType from "./TaskType";
 
-const data=[{
-    name:'Task1'
-    
+const data = [{
+    type: OpportunityType.TASK,
+    subtype: TaskType.IMAGE_CAPTIONING,
+    skills: [],
+    task: {
+        imageId: '001',
+        imageUrl: 'https://picsum.photos/600/300',
+    },
+    datePublished: new Date(2022, 8, 16, 23),
 },{
-    name:'task2'
+    type: OpportunityType.TASK,
+    subtype: TaskType.IMAGE_CAPTIONING,
+    skills: [],
+    task: {
+        imageId: '002',
+        imageUrl: 'https://picsum.photos/750/400',
+    },
+    datePublished: new Date(2022, 8, 17, 23),
 },{
-    name:'task3'
-}]
+    type: OpportunityType.TASK,
+    subtype: TaskType.IMAGE_CAPTIONING,
+    skills: [],
+    task: {
+        imageId: '003',
+        imageUrl: 'https://picsum.photos/500/200',
+    },
+    datePublished: new Date(2022, 8, 18, 23),
+}] as Task[];
 
 function TaskMatch(){
 
@@ -45,7 +67,7 @@ function TaskMatch(){
 
         <div className="mt-5  bg-white z-50 flex flex-col justify-center items-center">
         {
-        <TaskOrEventCard item={data[currentIndex]}></TaskOrEventCard>
+        <TaskCard item={data[currentIndex]}></TaskCard>
         }
 
 <div className="absolute bottom-2 w-full">
