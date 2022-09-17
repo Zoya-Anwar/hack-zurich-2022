@@ -22,7 +22,11 @@ html, body, #root {
 }
 
 ::-webkit-scrollbar {
-	 display:none;
+	display:none;
+}
+
+.MuiBottomNavigationAction-root.Mui-selected svg path {
+	fill: #1976d2 !important;
 }
 
 

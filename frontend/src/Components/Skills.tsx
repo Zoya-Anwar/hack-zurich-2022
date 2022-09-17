@@ -3,6 +3,8 @@ import { Button, Chip, Stack } from "@mui/material"
 
 const colors=['primary','success','secondary','info','error'] as const
 
+const colours = ['#6B7AED', '#EE544A', '#FF8D5D', '#7D67EE', '#29D697', '#39D1F2'];
+
 
 
 export function Skills(props:{skills:string[]}){
@@ -11,7 +13,11 @@ export function Skills(props:{skills:string[]}){
    
     {props.skills.map((skill,index)=>{
 
-       return <Chip label={skill} color={colors[index%colors.length-1]} /> 
+       return <Chip label={skill} style={{
+        margin: '4px',
+        color: '#FFFFFF',
+        backgroundColor: colours[index % colours.length],
+       }} /> 
     
     
     })

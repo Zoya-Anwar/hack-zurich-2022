@@ -12,7 +12,7 @@ import TaskType from "./TaskType";
 const data = [{
     type: OpportunityType.TASK,
     subtype: TaskType.IMAGE_CAPTIONING,
-    skills: [],
+    skills: ["Language", "Communication", "Others", "Cooking", "Music", "Video Creation"],
     task: {
         imageId: '001',
         imageUrl: 'https://picsum.photos/600/300',
@@ -73,7 +73,7 @@ function TaskMatch(){
             </div>
 
             <div className="mp-5  bg-white z-50 flex flex-col justify-center items-center" style={{
-                height: 'calc(100% - 100px)',
+                height: 'calc(100% - 120px)',
                 borderRadius: '20px 20px 0 0',
             }}>
                 {
@@ -85,14 +85,17 @@ function TaskMatch(){
                 }}>
                     <TextField
                         id="outlined-multiline-flexible"
-                        label="Your Caption"
+                        label="Image Label"
                         multiline
                         fullWidth
-                        minRows={3}
-                        maxRows={8}
+                        minRows={2}
+                        maxRows={2}
                         value={caption}
                         onChange={(e: any) => setCaption(e.target.value)}
                     />
+                    <br />
+                    <br />
+                    <br />
                 </div>
                 <div className="absolute bottom-2 w-full">
                     <div className=" flex flex-row  justify-between px-5 space-x-2">

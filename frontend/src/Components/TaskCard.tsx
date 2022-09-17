@@ -9,7 +9,20 @@ export function TaskCard(props:{item: Task}){
         const { subtype, task, datePublished } = props.item;
         const { imageUrl } = task;
 
-        return <div>
+        return <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <h5 style={{
+            position: 'absolute',
+            left: '20px',
+            fontWeight: 'bold',
+            top: '144px',
+          }}>
+            Skills
+          </h5>
+
          <Skills skills={props.item?.skills??[]} />
         <div className="flex flex-col justify-center space-y-2 w-[303px] rounded-[20px] p-3 bg-[#f3f3f3] ]">
 
@@ -28,6 +41,8 @@ export function TaskCard(props:{item: Task}){
         {/* <span className=" text-sm  text-[#000b23]">
       
         </span> */}
+
+        <br />
 
         <img
           src={imageUrl}

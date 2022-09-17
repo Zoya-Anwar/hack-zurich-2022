@@ -28,7 +28,7 @@ function App() {
 	return (
         <Router>
             	<div style={{display:'flex',
-			height: '100vh',
+			height: '100%',
 			flexDirection:'column',
 			backgroundColor: '#15083E',
 			width: '390px',
@@ -115,7 +115,7 @@ export  function SimpleBottomNavigation() {
         <BottomNavigationAction value='task' label="Task" icon={<TaskIcon />} />
         <BottomNavigationAction value='calender' label="Calender" icon={<CalenderIcon />} />
 		<BottomNavigationAction value='message' label="Messages" icon={<MessagesIcon />} />
-		<BottomNavigationAction value='event' label="Event" icon={<EventIcon />} />
+		<BottomNavigationAction value='event' label="Events" icon={<EventIcon />} />
 		
       </BottomNavigation>
     </Box>

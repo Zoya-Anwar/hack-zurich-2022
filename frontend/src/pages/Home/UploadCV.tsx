@@ -38,8 +38,11 @@ function UploadCV(props: UploadCVProps) {
           </p>
 
           <p className="text-[13px] text-center text-[#eee9e9]">
-            We believe the world that we together understad, act and learn.
+            We believe in the world that we together<br />
+            understand, act within and learn from.
           </p>
+
+          <br /><br /><br />
 
           <Button
             sx={{
