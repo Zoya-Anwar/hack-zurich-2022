@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
-import './style.css';
 
-import home from './home.png';
-
-import Button from '@mui/material/Button'
+import Loading from './Loading';
+import UploadCV from './UploadCV';
 
 function Home() {
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState<boolean>(false);
+
     const cvUploaded = (e: any) => {
+        setLoading(true);
+
         if (e.target.files.length === 0) return;
 
         const data = new FormData();
         data.append('file', e.target.files[0], e.target.files[0].name);
         axios.put('http://localhost:5000/', data).then((resp: AxiosResponse) => {
-            console.log(resp);
+            navigate('/profile');
         });
+
     }
 
 	return (
@@ -22,28 +27,11 @@ function Home() {
             height: '100%',
             margin: '8px',
         }}>
-            <div id="main" style={{
-                height: 'calc(100% - 56px)',
-                position: 'relative',
-            }}>
-                <img src={home} alt="placeholder" />
-            </div>
-            <div id="footer" style={{
-                height: '56px',
-            }}>
-                <Button
-                    variant="contained"
-                    component="label"
-                    fullWidth
-                >
-                    Upload Your CV
-                    <input
-                        type="file"
-                        hidden
-                        onChange={cvUploaded}
-                    />
-                </Button>
-            </div>
+            {
+                loading
+                ? <Loading />
+                : <UploadCV cvUploaded={cvUploaded} />
+            }
         </div>
 	);
 }
