@@ -1,21 +1,20 @@
-import React from 'react';
 import App from './App';
-
-function Template() {
+export function Template() {
 	return (
-		<div id="Template" style={{
-			height: '100%',
+		<div id="template" style={{
+			// height: '100%',
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
 			backgroundColor: 'black',
 		}}>
-			<div id="Wrapper" style={{
-				height: '844px',
+			<div id="wrapper" style={{
+				minHeight: '100vh',
 				width: '390px',
 				backgroundColor: 'white',
 			}}>
 				<App />
+	
 			</div>
 		</div>
 	);
