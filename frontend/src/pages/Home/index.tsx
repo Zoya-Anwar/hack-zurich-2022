@@ -24,7 +24,7 @@ function Home() {
 
 	return (
         <div id="Home" style={{
-            backgroundColor: loading?'white': '#15083E',
+            backgroundColor: '#15083E',
             height:'100%',
         }}>
             {
