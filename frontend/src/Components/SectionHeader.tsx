@@ -1,12 +1,12 @@
-export function SectionHeader(){
+export function SectionHeader(props:{title:string,subtitle:string}){
 
     return <div className="w-full flex flex-row  space-x-5 justify-between h-[43px] ">
-    <div className="flex flex-col justify-start items-start  gap-2">
+    <div className="flex flex-col justify-start items-start  pb-8">
       <p className="flex-grow-0 flex-shrink-0 text-lg font-semibold text-right text-[#000b23]">
-        Recommended Tasks
+        {props.title}
       </p>
       <p className="flex-grow-0 flex-shrink-0 text-xs text-right text-[#7b7b7b]">
-        Recommended for Programming
+        {props.subtitle}
       </p>
     </div>
     <div className="flex justify-start items-center  gap-5">

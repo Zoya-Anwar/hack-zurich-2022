@@ -6,8 +6,8 @@ export function TaskCard(props:{name?:string, category?:string,rating?:'High'|'L
     const category = props?.category??'UX/UI';
     const rating = props?.rating??'High';
 
-    return <div className= "relative w-[203px] h-[230px]">
-    <div className=" flex flex-col p-3  space-y-5 w-[203px] h-[230px]  rounded-[20px] bg-[#f3f3f3]" >
+    return <div className= "relative w-full h-full">
+    <div className=" flex flex-col p-3  space-y-5 w-full h-full rounded-[20px] bg-[#f3f3f3]" >
 
 
     <div className="flex flex-row justify-evenly space-x-4"> 
