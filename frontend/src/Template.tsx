@@ -1,5 +1,5 @@
 import App from './App';
-function Template() {
+export function Template() {
 	return (
 		<div id="template" style={{
 			// height: '100%',
