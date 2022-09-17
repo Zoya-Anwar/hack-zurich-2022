@@ -1,7 +1,7 @@
 import { Date } from "./Date";
 import { People } from "./People";
 
-export function Card(props:{name?:string, category?:string,rating?:'High'|'Low',date?:Date}){
+export function TaskCard(props:{name?:string, category?:string,rating?:'High'|'Low',date?:Date}){
 
     const category = props?.category??'UX/UI';
     const rating = props?.rating??'High';
@@ -14,7 +14,7 @@ export function Card(props:{name?:string, category?:string,rating?:'High'|'Low',
     <p className=" text-xs font-medium text-right text-[#8e61e9]">
         {category}
     </p>
-    <p className=" text-xs font-medium text-right text-[#e96161]">
+    <p className={`text-xs font-medium text-right text-[${rating=='High'? '#e96161':'#00FF00'}]`}>
       {rating}
     </p>
 
