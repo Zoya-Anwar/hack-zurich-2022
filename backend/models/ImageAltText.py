@@ -1,14 +1,14 @@
 from db import db
 
-class ImageCaptions(db.Document):
+class ImageAltText(db.Document):
     imageId = db.ObjectIdField()
     userId = db.ObjectIdField()
-    caption = db.StringField()    
+    altText = db.StringField()    
 
     def to_json(self):
         return {
             "imageId": self.imageId,
-            "userId": self.userId,
-            "caption": self.caption,
+            "userName": self.userName,
+            "altText": self.altText,
         }
 
