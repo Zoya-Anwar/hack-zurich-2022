@@ -15,12 +15,15 @@ return  <div className="relative">
   <Avatar sx={{width:50,height:50 }}></Avatar>
   <div className="flex-col ml-4 text-white">
         <h2 className="text-sm">Good Morning</h2>
-        <span className="font-bold ">{name?? 'STRANGER'}</span>
+        <span className="font-bold ">{name?? 'JOHN DOE'}</span>
         </div>
 
   </div>
 
-  <div className="flex-col ml-4 text-white justify-self-end">
+  <div className="flex-col ml-4 text-white justify-self-end" style={{
+      position: 'absolute',
+      right: '0',
+    }}>
   <IconButton aria-label="delete">
   <SearchOutlined sx={{color:'white',borderWidth:1,borderRadius:50,padding:'2px'}}  />
 </IconButton>
