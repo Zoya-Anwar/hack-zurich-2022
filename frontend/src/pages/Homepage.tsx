@@ -1,62 +1,101 @@
 import { FixedSizeList } from "react-window";
-import { Card } from "../Components/Card";
+import { TaskCard } from "../Components/Card";
 import { EventCard } from "../Components/EventCard";
 import { ProfileCard } from "../Components/ProfileCard";
 import { SectionHeader } from "../Components/SectionHeader";
+import { Event } from "../Types/Event";
+import { Task } from "../Types/Task";
 
 
-const Column = ({data, index, style }:any) => (
-	<div style={style}>
-		<Card name='This is a Task' />
-		{data}
-	</div>
+const PADDING_SIZE= 10;
+const ITEM_WIDTH= 203
+const ITEM_HEIGHT= 230
+
+
+const sampletasks: Task[] = [
+  {
+    name: "Task1",
+    category: "Programming",
+    rating: "Low",
+  },
+  {
+    name: "task2",
+    rating: "High",
+  },
+  {
+    name: "task3",
+  },
+];
+
+const sampleEvents: Event[] = [
+  {
+    name: "Event1",
+    skills: ["programming", "youtube", "coding", "something"],
+    date: new Date(),
+  },
+  {
+    name: "Event2",
+  },
+  {
+    name: "Event3",
+    description: "event is awesome",
+  },
+];
+
+const Column = ({ data, index, style }: any) => {
+  const item = data[index];
+
+  return (
+    <div  style={{... style,paddingRight:PADDING_SIZE,paddingBottom:PADDING_SIZE}}  >
+      <TaskCard name={item?.name} {...item} />
+    </div>
   );
+};
 
-  const Column2 = ({data, index, style }:any) => (
-	<div style={style}>
-		<EventCard name='Test Event' />
-		{data}
-	</div>
+const Column2 = ({ data, index, style }: any) => {
+  const item = data[index];
+  return (
+    <div style={{... style,paddingRight:PADDING_SIZE,paddingBottom:PADDING_SIZE}}  >
+      <EventCard name={item?.name} />
+    </div>
   );
+};
 
 function HomePage() {
-	return (
-<div className='flex flex-col space-y-5 p-4'>
+  return (
+    <div className="flex flex-col space-y-5 p-4">
+      <ProfileCard></ProfileCard>
 
+      <div>
+        <SectionHeader  title="Recommended Events" subtitle="Recommended for Programming"/>
+      </div>
 
-<ProfileCard></ProfileCard>
+      <FixedSizeList
+        height={ITEM_HEIGHT+PADDING_SIZE}
+        // itemCount={5}
+        itemData={sampletasks}
+        itemSize={ITEM_WIDTH}
+        layout="horizontal"
+        itemCount={sampletasks.length}
+        width={370}
+      >
+        {Column}
+      </FixedSizeList>
 
-<div>
+      <SectionHeader title="Recommended Events"  subtitle="Recommended for Programming"/>
 
-<SectionHeader/>
-</div>
-
- <FixedSizeList
-    height={250}
-    // itemCount={5}
-    itemSize={220}
-    layout="horizontal"
-	itemCount={300}
-
-    width={370}
-  >
-    {Column}
-  </FixedSizeList>
-
-
-  <FixedSizeList
-    height={250}
-	// itemData={[1,2,3]}
-    itemSize={220}
-    layout="horizontal"
-	itemCount={3}
-
-    width={370}
-  >
-    {Column2}
-  </FixedSizeList>
-
-</div>);
+      <FixedSizeList
+        height={ITEM_HEIGHT+PADDING_SIZE}
+        itemData={sampleEvents}
+        itemSize={ITEM_WIDTH}
+        layout="horizontal"
+        itemCount={sampleEvents.length}
+        width={370}
+      >
+        {Column2}
+      </FixedSizeList>
+    </div>
+  );
 }
 
 export default HomePage;
