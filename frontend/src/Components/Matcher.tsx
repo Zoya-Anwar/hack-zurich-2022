@@ -89,6 +89,15 @@ export function Matcher(props: { data: { name: string }[] }) {
             },
           }}
           onClick={() => swipe("left")}
+          style={{
+            width: '128px',
+            fontWeight: 'bolder',
+            fontSize: '18px',
+            borderRadius: '12px',
+            boxShadow: 'none',
+            padding: '8px 28px',
+            marginBottom: '12px',
+        }}
         >
           SKIP
         </Button>
@@ -108,7 +117,16 @@ export function Matcher(props: { data: { name: string }[] }) {
             color: "white",
             ":hover": { backgroundColor: "#8EF290" },
           }}
-          onClick={() => swipe("right")}
+          onClick={() => swipe("right")} 
+          style={{
+            width: '128px',
+            fontWeight: 'bolder',
+            fontSize: '18px',
+            borderRadius: '12px',
+            boxShadow: 'none',
+            padding: '8px 28px',
+            marginBottom: '12px',
+        }}
         >
           PICK
         </Button>

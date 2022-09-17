@@ -2,18 +2,17 @@ import { Matcher } from "../../Components/Matcher";
 
 const data = [
   {
-    name: "Event1",
-    skills: ["programming", "youtube", "coding", "something"],
+    name: "Volunteer for Teaching German ",
+    skills: ["Langauge", "Communication"],
     date: new Date(),
   },
   {
-    name: "Event2",
-    skills: ["cycling", "gaming", "coding", "something"],
+    name: "Volunteer for Social Media Management",
+    skills: ["Social Media", "Photography"],
   },
   {
-    name: "Event3",
-    skills: ["something"],
-    description: "event is awesome",
+    name: "Create a Website for Primary School",
+    skills: ["Web Development", "Technology"],
   },
 ];
 

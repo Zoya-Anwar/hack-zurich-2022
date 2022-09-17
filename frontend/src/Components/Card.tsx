@@ -3,12 +3,12 @@ import { People } from "./People";
 
 export function TaskCard(props: {
   name?: string;
-  category?: string;
+  skills?: string[];
   rating?: "High" | "Low";
   date?: Date;
 }) {
-  const category = props?.category ?? "UX/UI";
-  const rating = props?.rating ?? "High";
+  const category = props?.skills?.[0] ?? "";
+  const rating = props?.rating ?? "";
 
   return (
     <div className="relative w-full h-full">
@@ -17,25 +17,30 @@ export function TaskCard(props: {
           <p className=" text-xs font-medium text-right text-[#8e61e9]">
             {category}
           </p>
-          <p
-            style={{
-              backgroundColor:
-                rating === "High"
-                  ? "rgba(233, 97, 97, 0.1)"
-                  : "rgba(97, 233, 143, 0.1)",
-              borderRadius: "30px",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "6px 16px",
-              color: rating == "High" ? "#E96161" : "#1DC054"
-            }}
-            className={`text-xs  font-medium text-right 
-            `}
-          >
-            {rating}
-          </p>
+          {
+            rating 
+            ?
+            <p
+              style={{
+                backgroundColor:
+                  rating === "High"
+                    ? "rgba(233, 97, 97, 0.1)"
+                    : "rgba(97, 233, 143, 0.1)",
+                borderRadius: "30px",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "6px 16px",
+                color: rating == "High" ? "#E96161" : "#1DC054"
+              }}
+              className={`text-xs  font-medium text-right 
+              `}
+            >
+              {rating}
+            </p>
+            : <></>
+          }
         </div>
 
         <p className=" w-15px font-semibold text-left text-[#000b23]">

@@ -38,7 +38,10 @@ return  <div className="relative">
 <div className="absolute bottom-2 w-full">
     <div className=" flex flex-row  justify-between px-5 space-x-2">
     <Button size="small" variant='outlined' >Edit Profile</Button>
-    <Button size="small"  variant="contained" sx ={{background:'#8EF286',':hover':{background:'#8EF286'}}}>Search</Button>
+    <Button size="small"  variant="contained" sx ={{background:'#8EF286',':hover':{background:'#8EF286'}}} style={{
+      position: 'absolute',
+      right: '-10px',
+    }}>Search</Button>
     </div>
   </div>
 </Box>

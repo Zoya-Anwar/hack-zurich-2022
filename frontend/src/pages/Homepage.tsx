@@ -11,19 +11,29 @@ const PADDING_SIZE= 10;
 const ITEM_WIDTH= 203
 const ITEM_HEIGHT= 230
 
+const d1 = new Date();
+const d2 = new Date();
+const d3 = new Date();
+d1.setDate(22);
+d2.setDate(27)
+d3.setDate(3);
+d3.setMonth(9);
 
-const sampletasks: Task[] = [
+const sampletasks = [
   {
-    name: "Task1",
-    category: "Programming",
-    rating: "Low",
+    name: "Volunteer for Teaching German ",
+    skills: ["Langauge", "Communication"],
+    date: d1,
   },
   {
-    name: "task2",
-    rating: "High",
+    name: "Volunteer for Social Media Management",
+    skills: ["Social Media", "Photography"],
+    date: d2,
   },
   {
-    name: "task3",
+    name: "Create a Website for Primary School",
+    skills: ["Web Development", "Technology"],
+    date: d3,
   },
 ];
 
