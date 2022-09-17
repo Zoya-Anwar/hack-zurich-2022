@@ -49,7 +49,7 @@ def get_tweet_images():
                 if userImageAltText is None: 
                     return jsonify(skillImage.to_json())
             
-    # otherwise loop until new image found 
+    # otherwise loop until new appropriate image found 
     while True:
         rndImage, rndTopic = getRandomTwitterImageapDocuments(user.skills)
         image = Image.objects(tweetId = rndImage['Conversation_id']).first()
@@ -58,15 +58,51 @@ def get_tweet_images():
             userImage = Image.objects(imageID  = rndImage['Conversation_id']).first()
             # check not a user image already
             if not userImage:
-                newImage  = Image(tweetId=rndImage['Conversation_id'],
-                tweetUrl=rndImage['URL'],
-                tweetText=rndImage['Full_text'], 
-                topic = rndTopic, 
-                altText = "")
-                newImage.save()
-                break
+                # check image actually on topic (spam detection)
+                labels = detect_labels_uri(rndImage['URL'])
+               
+                if validate_image_on_topic(labels, rndTopic):
+                    # upload image to database
+                    newImage  = Image(tweetId=rndImage['Conversation_id'],
+                    tweetUrl=rndImage['URL'],
+                    tweetText=rndImage['Full_text'], 
+                    topic = rndTopic, 
+                    altText = "")
+                    newImage.save()
+                    break
 
     return jsonify(newImage.to_json())
+
+def detect_labels_uri(uri, topic):
+    """Detects labels in the file located in Google Cloud Storage or on the
+    Web."""
+    from google.cloud import vision
+
+    client = vision.ImageAnnotatorClient()
+    image = vision.Image()
+    image.source.image_uri = uri
+
+    response = client.label_detection(image=image)
+    labels = response.label_annotations
+    print(labels)
+
+
+    if response.error.message:
+        raise Exception(
+            '{}\nFor more info on error messages, check: '
+            'https://cloud.google.com/apis/design/errors'.format(
+                response.error.message))
+    return labels 
+
+def validate_image_on_topic(labels, topic):
+    nlp = spacy.load("en_core_web_md")
+    for label in labels:
+        nlp_label = nlp(label)
+        nlp_topic = nlp(topic)
+        if nlp_label.similarity(nlp_topic) > 0.4: 
+            return True
+    else:
+        return False
 
 @app.route('/postTweetAltText', methods=['PUT'])
 def post_tweet_images():
