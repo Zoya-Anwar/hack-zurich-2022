@@ -13,33 +13,28 @@ function App() {
 
 	return (
         <Router>
-            	<div style={{display:'flex',
-			height: '100vh',
-			flexDirection:'column',
-			backgroundColor: '#15083E',
-			width: '390px',
+            <div style={{display:'flex',
+				height: '100vh',
+				flexDirection:'column',
+				backgroundColor: '#15083E',
+				width: '390px',
+			}}> 
 
-}}> 
-
-	<div id="wrapper" style={{
-				flex:'1',
-				overflowY: 'scroll',
-				backgroundColor: 'white',
-
-			}}>
-                <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/homepage" element={<HomePage />} />
-                <Route path="/cv" element={<CVUpload />} />
-				<Route path="/task" element={<TaskMatch />} />
-				<Route path="/event" element={<EventMatch />} />
-
-            </Routes>
-            </div>
-
-			<TabBar/>
-
-        </div>
+				<div id="wrapper" style={{
+					flex:'1',
+					overflowY: 'scroll',
+					backgroundColor: 'white',
+				}}>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/homepage" element={<HomePage />} />
+						<Route path="/cv" element={<CVUpload />} />
+						<Route path="/task" element={<TaskMatch />} />
+						<Route path="/event" element={<EventMatch />} />
+					</Routes>
+           		</div>
+				<TabBar/>
+        	</div>
         </Router>
 	);
 }
