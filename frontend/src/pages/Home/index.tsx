@@ -24,7 +24,7 @@ function Home() {
 
 	return (
         <div id="Home" style={{
-            height: '100%',
+            height: 'calc(100% - 16px)',
             margin: '8px',
         }}>
             {

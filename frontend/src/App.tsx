@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, Link } from 'react-router-dom';
 
 import Home from './pages/Home';
 import CVUpload from './pages/CVUpload';
 import OnlineTask from './pages/OnlineTask'
 import { Tabs, Tab } from '@mui/material';
+
 
 function App() {
 	return (
@@ -15,8 +16,6 @@ function App() {
                 <Route path="/cv" element={<CVUpload />} />
                 <Route path="/onlinetask" element={<OnlineTask />} />
             </Routes>
-
-
         </Router>
 	);
 }
