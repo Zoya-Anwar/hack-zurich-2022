@@ -21,6 +21,10 @@ html, body, #root {
 	height: 100vh;
 }
 
+::-webkit-scrollbar {
+	 display:none;
+}
+
 
 @keyframes popup {
 	0%   { transform: scale(1,1) }

@@ -20,7 +20,10 @@ return  <div className="relative">
 
   </div>
 
-  <div className="flex-col ml-4 text-white justify-self-end">
+  <div className="flex-col ml-4 text-white justify-self-end" style={{
+      position: 'absolute',
+      right: '0',
+    }}>
   <IconButton aria-label="delete">
   <SearchOutlined sx={{color:'white',borderWidth:1,borderRadius:50,padding:'2px'}}  />
 </IconButton>

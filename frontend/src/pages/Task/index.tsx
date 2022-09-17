@@ -61,13 +61,16 @@ function TaskMatch(){
 
     }
     return (
-        <div className='w-full relative h-full'>
+        <div className='w-full relative h-full' style={{
+            backgroundColor: '#0E1730',
+        }}>
             <div className='flex flex-col space-y-5 p-4'>
                 <ProfileCardSmall></ProfileCardSmall>
             </div>
 
-            <div className="mt-5  bg-white z-50 flex flex-col justify-center items-center" style={{
-                height: 'calc(100% - 120px)',
+            <div className="mp-5  bg-white z-50 flex flex-col justify-center items-center" style={{
+                height: 'calc(100% - 100px)',
+                borderRadius: '20px 20px 0 0',
             }}>
                 {
                     <TaskCard item={data[currentIndex]}></TaskCard>
@@ -89,8 +92,26 @@ function TaskMatch(){
                 </div>
                 <div className="absolute bottom-2 w-full">
                     <div className=" flex flex-row  justify-between px-5 space-x-2">
-                        <Button onClick={skip} size="small" variant='outlined' >SKIP</Button>
-                        <Button onClick={accept}  size="small"  variant="contained" color="success" >SUBMIT</Button>
+                        <Button onClick={skip} size="small" variant='contained' style={{
+                            width: '128px',
+                            backgroundColor: '#0E1730',
+                            fontWeight: 'bolder',
+                            fontSize: '18px',
+                            borderRadius: '12px',
+                            boxShadow: 'none',
+                            padding: '8px 28px',
+                            marginBottom: '12px',
+                        }}>SKIP</Button>
+                        <Button onClick={accept}  size="small"  variant="contained" style={{
+                            width: '128px',
+                            backgroundColor: '#8EF286',
+                            fontWeight: 'bolder',
+                            fontSize: '18px',
+                            borderRadius: '12px',
+                            boxShadow: 'none',
+                            padding: '8px 28px',
+                            marginBottom: '12px',
+                        }}>SUBMIT</Button>
                     </div>
                 </div>
             </div>

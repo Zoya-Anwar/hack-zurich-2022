@@ -71,6 +71,7 @@ function HomePage() {
       </div>
 
       <FixedSizeList
+        className="hide-scroll"
         height={ITEM_HEIGHT+PADDING_SIZE}
         // itemCount={5}
         itemData={sampletasks}
