@@ -13,6 +13,7 @@ function Loading() {
             flexDirection: 'column',
         }}>
             <h1 style={{
+                fontSize: 'xx-large',
                 marginTop: 0,
             }}>
                 LOADING
