@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-// import home from './home.png';
+import home from './home.png';
 
 import Button from '@mui/material/Button'
 
@@ -18,7 +18,7 @@ function UploadCV(props: UploadCVProps) {
                 height: 'calc(100% - 56px)',
                 position: 'relative',
             }}>
-                <img src={'.'} alt="placeholder" />
+                <img src={home} alt="placeholder" />
             </div>
             <div id="footer" style={{
                 height: '56px',
