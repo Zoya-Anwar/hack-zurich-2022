@@ -1,3 +1,5 @@
+import axios, { AxiosResponse } from 'axios';
+
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { ProfileCardSmall } from "../../Components/ProfileCardSmall";
@@ -55,10 +57,12 @@ function TaskMatch(){
     }
 
     function accept(){
-        console.log(caption)
+        axios.put('http://localhost:5000/postTweetAltText', {
+            image_id: data[currentIndex].task.imageId,
+            alt_text: caption,
+        })
         setNewIndex(currentIndex+1)
-        //accepted 
-
+        setCaption('');
     }
     return (
         <div className='w-full relative h-full' style={{
