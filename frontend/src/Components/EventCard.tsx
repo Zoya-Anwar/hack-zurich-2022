@@ -1,4 +1,6 @@
-export function EventCard(){
+export function EventCard(props:any){
+
+
 
     return <div className="flex flex-col justify-center space-y-2 w-[203px] rounded-[20px] p-3 bg-[#f3f3f3] ]">
 

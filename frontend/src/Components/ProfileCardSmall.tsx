@@ -15,7 +15,7 @@ return  <div className="relative">
   <Avatar sx={{width:50,height:50 }}></Avatar>
   <div className="flex-col ml-4 text-white">
         <h2 className="text-sm">Good Morning</h2>
-        <span className="font-bold ">{name?? 'STRANGER'}</span>
+        <span className="font-bold ">{name?? 'JOHN DOE'}</span>
         </div>
 
   </div>
