@@ -16,8 +16,14 @@ const data = [
   },
 ];
 
-function EventMatch() {
-  return <Matcher data={data}></Matcher>;
+interface EventMatchProps {
+  name: string | null;
+}
+
+function EventMatch(props: EventMatchProps) {
+  const { name } = props;
+
+  return <Matcher data={data} name={name}></Matcher>;
 }
 
 export default EventMatch;

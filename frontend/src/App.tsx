@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, BrowserRouter as Router, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -24,6 +24,7 @@ import { ImportContacts } from '@mui/icons-material';
 
 
 function App() {
+	const [name, setName] = useState<string | null>(null);
 
 	return (
         <Router>
@@ -42,11 +43,11 @@ function App() {
 
 			}}>
                 <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/homepage" element={<HomePage />} />
-                <Route path="/cv" element={<CVUpload />} />
-				<Route path="/task" element={<TaskMatch />} />
-				<Route path="/event" element={<EventMatch />} />
+                <Route path="/" element={<Home setName={setName} />} />
+                <Route path="/homepage" element={<HomePage name={name} />} />
+                {/* <Route path="/cv" element={<CVUpload />} /> */}
+				<Route path="/task" element={<TaskMatch name={name} />} />
+				<Route path="/event" element={<EventMatch name={name} />} />
 
             </Routes>
             </div>

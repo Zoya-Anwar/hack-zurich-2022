@@ -4,7 +4,9 @@ import TinderCard from "react-tinder-card";
 import { ProfileCardSmall } from "./ProfileCardSmall";
 import { TaskOrEventCard } from "./TaskOrEventCard";
 
-export function Matcher(props: { data: { name: string }[] }) {
+export function Matcher(props: { data: { name: string }[], name: string | null }) {
+  const { name } = props;
+
   const [currentIndex, setCurrentIndex] = useState(props.data.length - 1);
   const [lastDirection, setLastDirection] = useState();
   // used for outOfFrame closure
@@ -59,7 +61,7 @@ export function Matcher(props: { data: { name: string }[] }) {
   return (
     <div className="relative h-full flex flex-col ">
       <div className="flex flex-col space-y-5 p-4">
-        <ProfileCardSmall></ProfileCardSmall>
+        <ProfileCardSmall name={name}></ProfileCardSmall>
       </div>
       <div className=" h-full w-full bg-white flex flex-col justify-center items-center">
         {props.data.map((item, index) => {

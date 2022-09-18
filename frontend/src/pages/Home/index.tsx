@@ -5,7 +5,13 @@ import axios, { AxiosResponse } from 'axios';
 import Loading from './Loading';
 import UploadCV from './UploadCV';
 
-function Home() {
+interface HomeProps {
+    setName(name: string): void;
+}
+
+function Home(props: HomeProps) {
+    const { setName } = props;
+
     const navigate = useNavigate();
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -17,7 +23,8 @@ function Home() {
         const data = new FormData();
         data.append('file', e.target.files[0], e.target.files[0].name);
         axios.put('http://localhost:5000/', data).then((resp: AxiosResponse) => {
-            navigate('/profile');
+            setName(resp.data.name);
+            navigate('/homepage');
         });
 
     }

@@ -31,11 +31,14 @@ def query_records():
 def create_record():
     with open('uploaded_pdf', 'wb') as f:
         f.write(request.stream.read())
+    print("PDF RECEIVED")
     data = resumeparse.read_file('uploaded_pdf')
+    print(data)
     cleaned_skills = clean_skills(data['skills'])
     user = User(email=data['email'],
                 name=data['name'],
                 skills=cleaned_skills)
+    print(user.__dict__)
     user.save()
     print(user.to_json())
     return jsonify(user.to_json())

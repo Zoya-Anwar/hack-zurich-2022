@@ -71,10 +71,16 @@ const Column2 = ({ data, index, style }: any) => {
   );
 };
 
-function HomePage() {
+interface HomePageProps {
+  name: string | null;
+}
+
+function HomePage(props: HomePageProps) {
+  const { name } = props;
+
   return (
     <div className="flex flex-col space-y-5 p-4">
-      <ProfileCard></ProfileCard>
+      <ProfileCard name={name}></ProfileCard>
 
       <div>
         <SectionHeader  title="Recommended Events" subtitle="Recommended for Programming"/>

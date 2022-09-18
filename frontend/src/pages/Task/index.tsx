@@ -38,7 +38,12 @@ const data = [{
     datePublished: new Date(2022, 8, 18, 23),
 }] as Task[];
 
-function TaskMatch(){
+interface TaskMatchProps {
+    name: string | null;
+}
+
+function TaskMatch(props: TaskMatchProps){
+    const { name } = props;
 
     const [currentIndex,setCurrentIndex]=useState(0);
     const [caption, setCaption] = useState<string>('');
@@ -69,7 +74,7 @@ function TaskMatch(){
             backgroundColor: '#0E1730',
         }}>
             <div className='flex flex-col space-y-5 p-4'>
-                <ProfileCardSmall></ProfileCardSmall>
+                <ProfileCardSmall name={name}></ProfileCardSmall>
             </div>
 
             <div className="mp-5  bg-white z-50 flex flex-col justify-center items-center" style={{

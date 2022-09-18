@@ -4,7 +4,8 @@ import avatar from '../resources/1avatar.png'
 
 export function ProfileCard(props:any){
 
-    const {name}= props?.name??'JOHN DOE';
+  
+  const  name = props?.name??'JOHN DOE';
 return  <div className="relative"> 
 <Box sx={{ margin:-2, minWidth: 275,height:300,backgroundColor:'#15083E' }}>
 <CardContent>
@@ -12,7 +13,8 @@ return  <div className="relative">
   <Avatar sx={{width:100,height:100 }}>
     <img src={avatar} />
   </Avatar>
-  <Typography>{name}</Typography>
+  <br />
+  <Typography style={{ color: '#FFFFFF' }}>{name}</Typography>
   </div>
 
   <div className="w-full justify-center mt-4">
