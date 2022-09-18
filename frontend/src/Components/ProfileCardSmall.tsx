@@ -15,7 +15,7 @@ import { SearchIcon } from "../resources/SearchIcon";
 import ios_stuff from './ios-stuff.png';
 
 export function ProfileCardSmall(props: any) {
-  const { name } = props?.name ?? "";
+  const name = props?.name ?? "";
 
   return (
     <div className="relative">
@@ -40,7 +40,7 @@ export function ProfileCardSmall(props: any) {
               <img src={avatar} />
             </Avatar>
             <div className="flex-col ml-4 text-white">
-              <h2 className="text-sm">Good Morning</h2>
+              <h2 className="text-sm">Hello</h2>
               <span className="font-bold ">{name ?? "JOHN DOE"}</span>
             </div>
           </div>

@@ -1,10 +1,13 @@
 import { Avatar, Button, Card, CardActions, CardContent, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import avatar from '../resources/1avatar.png'
+import ModeIcon from '@mui/icons-material/Mode';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 
 export function ProfileCard(props:any){
 
-    const {name}= props?.name??'JOHN DOE';
+  
+  const  name = props?.name??'JOHN DOE';
 return  <div className="relative"> 
 <Box sx={{ margin:-2, minWidth: 275,height:300,backgroundColor:'#15083E' }}>
 <CardContent>
@@ -12,7 +15,8 @@ return  <div className="relative">
   <Avatar sx={{width:100,height:100 }}>
     <img src={avatar} />
   </Avatar>
-  <Typography>{name}</Typography>
+  <br />
+  <Typography style={{ color: '#FFFFFF' }}>{name}</Typography>
   </div>
 
   <div className="w-full justify-center mt-4">
@@ -20,15 +24,15 @@ return  <div className="relative">
       <div className="flex-1 flex-col">
         <div className="flex-1 flex-col text-right">
         <h2 className="text-sm">Contributions</h2>
-        <span className="font-bold ">10000 Hrs</span>
+        <span className="font-bold ">346 Hrs</span>
         </div>
 
       </div>
 
     <div style={{width:2,backgroundColor:'white'}}></div>
       <div className="flex-1 flex-col bg-red">
-        <h2 className="text-sm">Badges</h2>
-        <span className="font-bold">2000</span>
+        <h2 className="text-sm">Badges <MilitaryTechIcon style={{ color: '#F9AB1A' }} /></h2>
+        <span className="font-bold">10</span>
       </div>
     </div>
 
@@ -37,8 +41,11 @@ return  <div className="relative">
 </CardContent>
 <div className="absolute bottom-2 w-full">
     <div className=" flex flex-row  justify-between px-5 space-x-2">
-    <Button size="small" variant='outlined' >Edit Profile</Button>
-    <Button size="small"  variant="contained" sx ={{background:'#8EF286',':hover':{background:'#8EF286'}}}>Search</Button>
+    <Button size="small" variant='outlined' startIcon={<ModeIcon />}>Edit Profile</Button>
+    <Button size="small"  variant="contained" sx ={{background:'#8EF286',':hover':{background:'#8EF286'}}} style={{
+      position: 'absolute',
+      right: '-10px',
+    }}>Search</Button>
     </div>
   </div>
 </Box>
