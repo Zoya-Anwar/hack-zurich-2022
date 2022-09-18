@@ -50,7 +50,7 @@ function TaskMatch(props: TaskMatchProps){
 
     const setNewIndex=(index:number)=>{
 
-        if(index>=data.length || index<0){
+        if(index > data.length || index < 0){
             return
         }
         setCurrentIndex(index);
@@ -69,6 +69,7 @@ function TaskMatch(props: TaskMatchProps){
         setNewIndex(currentIndex+1)
         setCaption('');
     }
+
     return (
         <div className='w-full relative h-full' style={{
             backgroundColor: '#0E1730',
@@ -77,56 +78,80 @@ function TaskMatch(props: TaskMatchProps){
                 <ProfileCardSmall name={name}></ProfileCardSmall>
             </div>
 
-            <div className="mp-5  bg-white z-50 flex flex-col justify-center items-center" style={{
-                height: 'calc(100% - 120px)',
-                borderRadius: '20px 20px 0 0',
-            }}>
-                {
-                    <TaskCard item={data[currentIndex]}></TaskCard>
-                }
-                <br />
-                <div style={{
-                    width: 'calc(100% - 92px)',
-                }}>
-                    <TextField
-                        id="outlined-multiline-flexible"
-                        label="Image Label"
-                        multiline
-                        fullWidth
-                        minRows={2}
-                        maxRows={2}
-                        value={caption}
-                        onChange={(e: any) => setCaption(e.target.value)}
-                    />
+            {
+                currentIndex >= data.length
+                ? <div style={{
+                    textAlign: 'center',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: 'white',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                  }}>
+                    <div style={{
+                        textAlign: 'center',
+                        width: '80%',                    
+                        marginTop: '-56px',
+                    }}>
+                        <h1 style={{ fontSize: 'xx-large', fontWeight: 500, }}>That's all for now!</h1>
+                        <br />
+                        <p>We've run out of opportunities to show for now. Check back soon...</p>
+                    </div>
+                  </div>
+                : <div className="mp-5  bg-white z-50 flex flex-col justify-center items-center" style={{
+                        height: 'calc(100% - 120px)',
+                        borderRadius: '20px 20px 0 0',
+                  }}>
+                    {
+                        <TaskCard item={data[currentIndex]}></TaskCard>
+                    }
                     <br />
-                    <br />
-                    <br />
-                </div>
-                <div className="absolute bottom-2 w-full">
-                    <div className=" flex flex-row  justify-between px-5 space-x-2">
-                        <Button onClick={skip} size="small" variant='contained' style={{
-                            width: '128px',
-                            backgroundColor: '#0E1730',
-                            fontWeight: 'bolder',
-                            fontSize: '18px',
-                            borderRadius: '12px',
-                            boxShadow: 'none',
-                            padding: '8px 28px',
-                            marginBottom: '12px',
-                        }}>SKIP</Button>
-                        <Button onClick={accept}  size="small"  variant="contained" style={{
-                            width: '128px',
-                            backgroundColor: '#8EF286',
-                            fontWeight: 'bolder',
-                            fontSize: '18px',
-                            borderRadius: '12px',
-                            boxShadow: 'none',
-                            padding: '8px 28px',
-                            marginBottom: '12px',
-                        }}>SUBMIT</Button>
+                    <div style={{
+                        width: 'calc(100% - 92px)',
+                    }}>
+                        <TextField
+                            id="outlined-multiline-flexible"
+                            label="Image Label"
+                            multiline
+                            fullWidth
+                            minRows={2}
+                            maxRows={2}
+                            value={caption}
+                            onChange={(e: any) => setCaption(e.target.value)}
+                        />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                    <div className="absolute bottom-2 w-full">
+                        <div className=" flex flex-row  justify-between px-5 space-x-2">
+                            <Button onClick={skip} size="small" variant='contained' style={{
+                                width: '128px',
+                                backgroundColor: '#0E1730',
+                                fontWeight: 'bolder',
+                                fontSize: '18px',
+                                borderRadius: '12px',
+                                boxShadow: 'none',
+                                padding: '8px 28px',
+                                marginBottom: '12px',
+                            }}>SKIP</Button>
+                            <Button onClick={accept}  size="small"  variant="contained" style={{
+                                width: '128px',
+                                backgroundColor: '#8EF286',
+                                fontWeight: 'bolder',
+                                fontSize: '18px',
+                                borderRadius: '12px',
+                                boxShadow: 'none',
+                                padding: '8px 28px',
+                                marginBottom: '12px',
+                            }}>SUBMIT</Button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+
         </div>
     );
 }

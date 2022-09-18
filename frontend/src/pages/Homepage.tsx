@@ -39,16 +39,17 @@ const sampletasks = [
 
 const sampleEvents: Event[] = [
   {
-    name: "Event1",
-    skills: ["programming", "youtube", "coding", "something"],
+    name: "Volunteer for Teaching German ",
+    skills: ["Langauge", "Communication"],
     date: new Date(),
   },
   {
-    name: "Event2",
+    name: "Volunteer for Social Media Management",
+    skills: ["Social Media", "Photography"],
   },
   {
-    name: "Event3",
-    description: "event is awesome",
+    name: "Create a Website for Primary School",
+    skills: ["Web Development", "Technology"],
   },
 ];
 
@@ -64,9 +65,10 @@ const Column = ({ data, index, style }: any) => {
 
 const Column2 = ({ data, index, style }: any) => {
   const item = data[index];
+
   return (
     <div style={{... style,paddingRight:PADDING_SIZE,paddingBottom:PADDING_SIZE}}  >
-      <EventCard name={item?.name} />
+      <EventCard name={item?.name} image={`https://picsum.photos/${(400 + index).toString()}/${(300 + index).toString()}`} />
     </div>
   );
 };
@@ -83,7 +85,7 @@ function HomePage(props: HomePageProps) {
       <ProfileCard name={name}></ProfileCard>
 
       <div>
-        <SectionHeader  title="Recommended Events" subtitle="Recommended for Programming"/>
+        <SectionHeader  title="Recommended Tasks" subtitle="Recommended for Programming"/>
       </div>
 
       <FixedSizeList

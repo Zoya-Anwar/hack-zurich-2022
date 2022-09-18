@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import { ProfileCardSmall } from "./ProfileCardSmall";
@@ -9,6 +9,7 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
 
   const [currentIndex, setCurrentIndex] = useState(props.data.length - 1);
   const [lastDirection, setLastDirection] = useState();
+  const [calendarPopupLastTriggered, setCalendarPopupLastTriggered] = useState<number>(0);
   // used for outOfFrame closure
   const currentIndexRef = useRef(5);
 
@@ -25,12 +26,21 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
     currentIndexRef.current = val;
   };
 
+  console.log(calendarPopupLastTriggered, Date.now() - calendarPopupLastTriggered < 3000)
+
   const canGoBack = currentIndex < props.data.length - 1;
 
   const canSwipe = currentIndex >= 0;
 
   // set last direction and decrease current index
   const swiped = (direction: any, nameToDelete: any, index: any) => {
+    if (direction === 'right') {
+      setCalendarPopupLastTriggered(Date.now());
+      setTimeout(() => {
+        setCalendarPopupLastTriggered(0);
+      }, 100000);
+    }
+
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
   };
@@ -59,24 +69,36 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
   };
 
   return (
+    <>
     <div className="relative h-full flex flex-col ">
       <div className="flex flex-col space-y-5 p-4">
         <ProfileCardSmall name={name}></ProfileCardSmall>
       </div>
       <div className=" h-full w-full bg-white flex flex-col justify-center items-center">
-        {props.data.map((item, index) => {
-          return (
-            <TinderCard
-              ref={childRefs[index]}
-              className="absolute bg-white p-3"
-              key={item.name}
-              onSwipe={(dir: any) => swiped(dir, item.name, index)}
-              onCardLeftScreen={() => outOfFrame(item.name, index)}
-            >
-              <TaskOrEventCard item={props.data[index]}></TaskOrEventCard>
-            </TinderCard>
-          );
-        })}
+        {
+          currentIndex === -1
+          ? <div style={{
+              textAlign: 'center',
+              width: '80%',
+            }}>
+              <h1 style={{ fontSize: 'xx-large', fontWeight: 500, }}>That's all for now!</h1>
+              <br />
+              <p>We've run out of opportunities to show for now. Check back soon...</p>
+            </div>
+          : props.data.map((item, index) => {
+              return (
+                <TinderCard
+                  ref={childRefs[index]}
+                  className="absolute bg-white p-3"
+                  key={item.name}
+                  onSwipe={(dir: any) => swiped(dir, item.name, index)}
+                  onCardLeftScreen={() => outOfFrame(item.name, index)}
+                >
+                  <TaskOrEventCard item={props.data[index]} image={`https://picsum.photos/${(400 + index).toString()}/${(300 + index).toString()}`}></TaskOrEventCard>
+                </TinderCard>
+              );
+            })
+        }
       </div>
 
       <div className="px-3 w-full flex flex-row justify-between">
@@ -109,9 +131,7 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
         >
           GO BACK
         </Button> */}
-    {lastDirection==='right' &&
-        <div className="text-lg">Picked </div>
-    }
+
         <Button
           disabled={!canSwipe}
           sx={{
@@ -134,5 +154,13 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
         </Button>
       </div>
     </div>
+    <Snackbar
+      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+      open={Date.now() - calendarPopupLastTriggered < 3000}
+      onClose={() => setCalendarPopupLastTriggered(0)}
+      message="Added to your calendar"
+    />
+    </>
   );
 }
+

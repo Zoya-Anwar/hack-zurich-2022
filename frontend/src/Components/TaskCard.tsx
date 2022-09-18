@@ -5,7 +5,9 @@ import { Date } from "./Date";
 import { People } from "./People";
 import { Skills } from "./Skills";
 
+
 export function TaskCard(props:{item: Task}){
+        const i = props.item.datePublished.getDate();
         const { subtype, task, datePublished } = props.item;
         const { imageUrl } = task;
 
@@ -33,8 +35,9 @@ export function TaskCard(props:{item: Task}){
         { subtype == TaskType.IMAGE_CAPTIONING ? 'Caption This Image' : '' }
         </h3>
 
+          
         <div className=''>
-        <People></People>
+        <People i={i}></People>
         </div>
         </div>
 

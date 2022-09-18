@@ -29,6 +29,9 @@ html, body, #root {
 	fill: #1976d2 !important;
 }
 
+.MuiSnackbar-anchorOriginBottomCenter {
+	bottom: 48px !important;
+}
 
 @keyframes popup {
 	0%   { transform: scale(1,1) }

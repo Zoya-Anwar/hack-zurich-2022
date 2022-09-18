@@ -1,12 +1,14 @@
 import { Date } from "./Date";
 import { People } from "./People";
 
+
 export function TaskCard(props: {
   name?: string;
   skills?: string[];
   rating?: "High" | "Low";
   date?: Date;
 }) {
+  const i = (props.name ?? "dummy string").length % 22;
   const category = props?.skills?.[0] ?? "";
   const rating = props?.rating ?? "";
 
@@ -47,7 +49,7 @@ export function TaskCard(props: {
           {props.name}
         </p>
 
-        <People></People>
+        <People i={i}></People>
 
         <div className="absolute bottom-2">
           <Date date={props.date}></Date>

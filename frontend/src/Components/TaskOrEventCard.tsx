@@ -3,7 +3,9 @@ import { Date } from "./Date";
 import { People } from "./People";
 import { Skills } from "./Skills";
 
-export function TaskOrEventCard(props:{item:{name:string,description?:string ,type?:'EVENT'|'TASK',skills?:string[],date?:Date}}){
+
+export function TaskOrEventCard(props:{item:{name:string,description?:string ,type?:'EVENT'|'TASK',skills?:string[],date?:Date}, image: string}){
+        const i = props.item.name.length % 22;
         const {name,description} = props?.item;
 
         return <div className='w-full h-full overflow-hidden flex flex-col space-y-1 justify-around'>
@@ -18,7 +20,7 @@ export function TaskOrEventCard(props:{item:{name:string,description?:string ,ty
         </span>
 
         <div className='scale-[0.7]'>
-        <People></People>
+        <People i={i}></People>
         </div>
         </div>
 
@@ -27,7 +29,7 @@ export function TaskOrEventCard(props:{item:{name:string,description?:string ,ty
         </span>
 
         <img
-          src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
+          src={props.image}
           className="w-full aspect-video rounded-[10px] px-0 object-cover"
         />
     <Divider></Divider>
