@@ -4,7 +4,7 @@ import TinderCard from "react-tinder-card";
 import { ProfileCardSmall } from "./ProfileCardSmall";
 import { TaskOrEventCard } from "./TaskOrEventCard";
 
-export function Matcher(props: { data: { name: string }[], name: string | null }) {
+export function Matcher(props: { data: { name: string, description: string, image: string }[], name: string | null }) {
   const { name } = props;
 
   const [currentIndex, setCurrentIndex] = useState(props.data.length - 1);
@@ -94,7 +94,7 @@ export function Matcher(props: { data: { name: string }[], name: string | null }
                   onSwipe={(dir: any) => swiped(dir, item.name, index)}
                   onCardLeftScreen={() => outOfFrame(item.name, index)}
                 >
-                  <TaskOrEventCard item={props.data[index]} image={`https://picsum.photos/${(400 + index).toString()}/${(300 + index).toString()}`}></TaskOrEventCard>
+                  <TaskOrEventCard item={props.data[index]}></TaskOrEventCard>
                 </TinderCard>
               );
             })

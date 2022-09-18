@@ -4,9 +4,9 @@ import { People } from "./People";
 import { Skills } from "./Skills";
 
 
-export function TaskOrEventCard(props:{item:{name:string,description?:string ,type?:'EVENT'|'TASK',skills?:string[],date?:Date}, image: string}){
+export function TaskOrEventCard(props:{item:{name:string,description?:string ,image: string,type?:'EVENT'|'TASK',skills?:string[],date?:Date,}}){
         const i = props.item.name.length % 22;
-        const {name,description} = props?.item;
+        const {name,description,image} = props?.item;
 
         return <div className='w-full h-full overflow-hidden flex flex-col space-y-1 justify-around'>
          <Skills skills={props.item?.skills??[]} />
@@ -24,12 +24,12 @@ export function TaskOrEventCard(props:{item:{name:string,description?:string ,ty
         </div>
         </div>
 
-        <span className="text-sm  text-[#000b23]">
-      {description}
+        <span className="text-sm">
+          {description}
         </span>
 
         <img
-          src={props.image}
+          src={image}
           className="w-full aspect-video rounded-[10px] px-0 object-cover"
         />
     <Divider></Divider>

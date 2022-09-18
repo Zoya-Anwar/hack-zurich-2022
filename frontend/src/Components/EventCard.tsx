@@ -1,4 +1,4 @@
-export function EventCard(props:{name:string, image: string}){
+export function EventCard(props:{name:string, image: string, description: string}){
 
 
 
@@ -7,6 +7,7 @@ export function EventCard(props:{name:string, image: string}){
     <h3 className="text-lg font-semibold text-[#000b23]">
 {props.name}
     </h3>
+    <p>{props.description}</p>
     <img
       src={props.image}
       className="w-full aspect-video rounded-[10px] px-0 object-cover"
