@@ -26,7 +26,7 @@ html, body, #root {
 }
 
 .MuiBottomNavigationAction-root.Mui-selected svg path {
-	fill: #1976d2 !important;
+	stroke: #1976d2 !important;
 }
 
 .MuiSnackbar-anchorOriginBottomCenter {

@@ -16,7 +16,18 @@ export function TaskCard(props: {
     <div className="relative w-full h-full">
       <div className=" flex flex-col p-3  space-y-5 w-full h-full rounded-[20px] bg-[#f3f3f3]">
         <div className="flex flex-row justify-evenly items-center space-x-6">
-          <p className=" text-xs font-medium text-right text-[#8e61e9]">
+          <p 
+            className=" text-xs font-medium text-right text-[#8e61e9]"
+            style={{
+              backgroundColor: "rgba(147, 92, 233, 0.1)",
+              borderRadius: "30px",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "6px 16px",
+              color: "#8E61E9"
+            }}>
             {category}
           </p>
           {
