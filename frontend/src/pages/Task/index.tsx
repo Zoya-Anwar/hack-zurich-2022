@@ -12,7 +12,7 @@ import TaskType from "./TaskType";
 const data = [{
     type: OpportunityType.TASK,
     subtype: TaskType.IMAGE_CAPTIONING,
-    skills: ["Language", "Communication", "Others", "Cooking", "Music", "Video Creation"],
+    skills: ["Language", "Communication", "Cooking"],
     task: {
         imageId: '001',
         imageUrl: 'https://picsum.photos/600/300',
@@ -21,7 +21,7 @@ const data = [{
 },{
     type: OpportunityType.TASK,
     subtype: TaskType.IMAGE_CAPTIONING,
-    skills: [],
+    skills: ["Music", "Video Creation"],
     task: {
         imageId: '002',
         imageUrl: 'https://picsum.photos/750/400',
@@ -30,7 +30,7 @@ const data = [{
 },{
     type: OpportunityType.TASK,
     subtype: TaskType.IMAGE_CAPTIONING,
-    skills: [],
+    skills: ["Gaming", "Painting"],
     task: {
         imageId: '003',
         imageUrl: 'https://picsum.photos/500/200',
